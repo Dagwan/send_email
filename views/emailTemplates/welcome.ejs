@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add your styling here */
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background-color: #f9f9f9; 
+    }
+    .header { 
+      background-color: #4CAF50; 
+      color: white; 
+      padding: 20px; 
+      text-align: center; 
+    }
+    .content { 
+      padding: 20px; 
+      background-color: #ffffff; 
+      margin: 10px; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    }
+    .footer { 
+      background-color: #f5f5f5; 
+      padding: 10px; 
+      text-align: center; 
+      font-size: 12px; 
+      color: #666; 
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Welcome to Fakad Infotech Centre</h1>
+  </div>
+  <div class="content">
+    <p>Hello <%= name %>,</p>
+    <p>Thank you for registering with Fakad Infotech Centre. We're thrilled to have you on board!</p>
+    <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+    <p>Best Regards,<br>Fakad Infotech Team</p>
+    <!-- Optional: Add an image to the email -->
+    <% if (typeof attachments !== 'undefined' && attachments.length > 0) { %>
+      <% attachments.forEach(att => { %>
+        <% if (att.cid) { %>
+          <div class="image-container">
+            <img src="cid:<%= att.cid %>" alt="Welcome Image">
+          </div>
+        <% } %>
+      <% }); %>
+    <% } %>
+  </div>
+  <div class="footer">
+    <p>Fakad Infotech Centre<br>
+      Suite Pb19, Virginia Pavilion Plaza, Behind Eco-Bank, Federal Housing Junction, Kubwa, FCT-Abuja<br>
+      <a href="mailto:info@fakadinfotech.com" style="color: #4CAF50;">info@fakadinfotech.com</a>
+    </p>
+  </div>
+</body>
+</html>

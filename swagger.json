@@ -1,0 +1,1456 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Fakad Infotech Centre Management API",
+    "description": "API documentation for the Fakad Management API. This API is designed to help you manage student applications, contact messages, and user accounts efficiently. Whether you need to create, retrieve, update, or delete records, this API has got you covered. With a user-friendly interface and comprehensive functionality, you can seamlessly integrate these management tasks into your applications.\n\n**Key Features:**\n\n- **Create Student Applications:** Use the POST endpoint to add new student applications to your database, providing details like name, contact information, guardian details, and choice of training programme.\n\n- **Retrieve Student Applications:** The GET endpoint allows you to fetch a list of all student applications or retrieve a specific application by its unique ID.\n\n- **Update Student Applications:** Easily update student application information using the PUT endpoint. Send the updated details in JSON format to modify existing applications.\n\n- **Delete Student Applications:** Remove student applications from your database using the DELETE endpoint. Specify the application's ID to delete a specific entry.\n\n- **Create Contact Messages:** Use the POST endpoint to add new contact messages to your database, providing details like name, email, phone, subject, and message.\n\n- **Retrieve Contact Messages:** The GET endpoint allows you to fetch a list of all contact messages or retrieve a specific message by its unique ID.\n\n- **Update Contact Messages:** Easily update contact message information using the PUT endpoint. Send the updated details in JSON format to modify existing messages.\n\n- **Delete Contact Messages:** Remove contact messages from your database using the DELETE endpoint. Specify the message's ID to delete a specific entry.\n\n- **Create User Accounts:** Use the POST endpoint to add new user accounts to your database, providing details like full name, username, password, email, phone number, date of birth, and gender.\n\n- **Retrieve User Accounts:** The GET endpoint allows you to fetch a list of all user accounts or retrieve a specific account by its unique ID.\n\n- **Update User Accounts:** Easily update user account information using the PUT endpoint. Send the updated details in JSON format to modify existing accounts.\n\n- **Delete User Accounts:** Remove user accounts from your database using the DELETE endpoint. Specify the account's ID to delete a specific entry.\n\n**Sample Requests and Responses:** We've provided sample JSON requests and responses for each endpoint to help you understand how to interact with the API effectively.\n\n**Error Handling:** The API includes error responses and status codes to guide you in case of any issues.\n\n**API Documentation:** Explore the detailed API documentation below to learn how to use each endpoint, the expected request structures, and response formats.\n\nStart managing your student applications, contact messages, and user accounts effortlessly with the Fakad Infotech Centre Management API. Integrate it into your applications to streamline these management tasks and enhance user experiences.\n\n\n# DEVELOPER'S GUIDE/INSTRUCTIONS ON HOW TO PERFORM THE CRUD\n-----------------------------------------------------------------\nFor local testing, replace the base URL \"https://fakad-student-application.onrender.com/application-form\" with http://localhost:8080/application-form.\n\nFor example, the endpoint \"https://fakad-student-application.onrender.com/application-form\" should be accessed as \"http://localhost:8080/application-form\" when testing locally. Everything else in the API request remains the same.\n\n-----------------------------------------------------------------\n\n## Application form\n### // PRODUCTION\n\n#### create fakads\ncurl -X POST https://fakad-student-application.onrender.com/application-form/\n-H \"Content-Type: application/json\" -d '{\n  \"firstName\": \"Hope\",\n  \"middleName\": \"A\",\n  \"lastName\": \"Simon\",\n  \"gender\": \"Female\",\n  \"dateOfBirth\": \"1990-05-15\",\n  \"maritalStatus\": \"Single\",\n  \"phoneNumber\": \"+1234567890\",\n  \"email\": \"hope.simon@example.com\",\n  \"contactAddress\": \"123 Tech Street\",\n  \"occupation\": \"Software Engineer\",\n  \"placeOfBirth\": \"Tech City\",\n  \"stateOfOrigin\": \"Tech State\",\n  \"localGovtArea\": \"Tech Local Govt\",\n  \"homeTown\": \"Tech Town\",\n  \"villageAddress\": \"Tech Village\",\n  \"previousTraining\": \"Yes\",\n  \"previousTrainingDetails\": {\n    \"trainingPlaceName\": \"Tech Training Center\",\n    \"trainingAddress\": \"456 Training Avenue\",\n    \"trainingDuration\": \"6 months\"\n  },\n  \"choiceOfTrainingProgramme\": \"Certificate\",\n  \"passportPhotograph\": \"base64ImageString\",\n  \"guardian\": {\n    \"firstName\": \"GuardianFirstName\",\n    \"middleName\": \"GuardianMiddleName\",\n    \"lastName\": \"GuardianLastName\",\n    \"gender\": \"Male\",\n    \"maritalStatus\": \"Married\",\n    \"phoneNumber\": \"+9876543210\",\n    \"email\": \"guardian@example.com\",\n    \"contactAddress\": \"789 Guardian Street\",\n    \"occupation\": \"Guardian Occupation\",\n    \"placeOfBirth\": \"Guardian City\",\n    \"stateOfOrigin\": \"Guardian State\",\n    \"localGovtArea\": \"Guardian Local Govt\",\n    \"homeTown\": \"Guardian Town\",\n    \"villageAddress\": \"Guardian Village\",\n    \"identificationType\": \"National ID\",\n    \"identificationUpload\": \"base64ImageString\",\n    \"passportPhotograph\": \"guardianBase64ImageString\"\n  },\n  \"nextOfKin\": {\n    \"firstName\": \"NextOfKinFirstName\",\n    \"middleName\": \"NextOfKinMiddleName\",\n    \"lastName\": \"NextOfKinLastName\",\n    \"gender\": \"Female\",\n    \"maritalStatus\": \"Single\",\n    \"relationship\": \"Mother\",\n    \"phoneNumber\": \"+9876543210\",\n    \"email\": \"nextofkin@example.com\",\n    \"contactAddress\": \"789 NextOfKin Street\",\n    \"occupation\": \"NextOfKin Occupation\",\n    \"placeOfBirth\": \"NextOfKin City\",\n    \"stateOfOrigin\": \"NextOfKin State\",\n    \"localGovtArea\": \"NextOfKin Local Govt\",\n    \"homeTown\": \"NextOfKin Town\",\n    \"villageAddress\": \"NextOfKin Village\"\n  }\n}'\n\n### Get all fakads\nGET https://fakad-student-application.onrender.com/application-form/\n\n\n### Get a fakad by ID\nGET https://fakad-student-application.onrender.com/application-form/66a4d0a8b662e5bd9f890aa8\n// Replace :id with the actual ID of the fakad\n\n\n### Update a fakad\ncurl -X PUT https://fakad-student-application.onrender.com/application-form/66a4d0a8b662e5bd9f890aa8 -H \"Content-Type: application/json\" -d '{\n  \"firstName\": \"John\",\n  \"middleName\": \"B\",\n  \"lastName\": \"Doe\",\n  \"gender\": \"Male\",\n  \"dateOfBirth\": \"1995-08-20\",\n  \"maritalStatus\": \"Married\",\n  \"phoneNumber\": \"+9876543210\",\n  \"email\": \"johndoe@example.com\",\n  \"contactAddress\": \"456 Data Avenue\",\n  \"occupation\": \"Data Scientist\",\n  \"placeOfBirth\": \"Data City\",\n  \"stateOfOrigin\": \"Data State\",\n  \"localGovtArea\": \"Data Local Govt\",\n  \"homeTown\": \"Data Town\",\n  \"villageAddress\": \"Data Village\",\n  \"previousTraining\": \"No\",\n  \"choiceOfTrainingProgramme\": \"Diploma\",\n  \"passportPhotograph\": \"newBase64ImageString\",\n  \"guardian\": {\n    \"firstName\": \"UpdatedGuardianFirstName\",\n    \"middleName\": \"\",\n    \"lastName\": \"UpdatedGuardianLastName\",\n    \"gender\": \"Female\",\n    \"maritalStatus\": \"Divorced\",\n    \"phoneNumber\": \"+9876543210\",\n    \"email\": \"updatedguardian@example.com\",\n    \"contactAddress\": \"789 Updated Guardian Street\",\n    \"occupation\": \"Updated Guardian Occupation\",\n    \"placeOfBirth\": \"Updated Guardian City\",\n    \"stateOfOrigin\": \"Updated Guardian State\",\n    \"localGovtArea\": \"Updated Guardian Local Govt\",\n    \"homeTown\": \"Updated Guardian Town\",\n    \"villageAddress\": \"Updated Guardian Village\",\n    \"identificationType\": \"International Passport\",\n    \"identificationUpload\": \"updatedBase64ImageString\",\n    \"passportPhotograph\": \"updatedGuardianBase64ImageString\"\n  },\n  \"nextOfKin\": {\n    \"firstName\": \"UpdatedNextOfKinFirstName\",\n    \"middleName\": \"\",\n    \"lastName\": \"UpdatedNextOfKinLastName\",\n    \"gender\": \"Male\",\n    \"maritalStatus\": \"Married\",\n    \"relationship\": \"Father\",\n    \"phoneNumber\": \"+9876543210\",\n    \"email\": \"updatednextofkin@example.com\",\n    \"contactAddress\": \"789 Updated NextOfKin Street\",\n    \"occupation\": \"Updated NextOfKin Occupation\",\n    \"placeOfBirth\": \"Updated NextOfKin City\",\n    \"stateOfOrigin\": \"Updated NextOfKin State\",\n    \"localGovtArea\": \"Updated NextOfKin Local Govt\",\n    \"homeTown\": \"Updated NextOfKin Town\",\n    \"villageAddress\": \"Updated NextOfKin Village\"\n  }\n}'\n\n\n### Delete a fakad by ID\nDELETE https://fakad-student-application.onrender.com/application-form/66b355dc20e5e94c404ff3e9\n\n\n-----------------------------------------------------------------\n\n\n### Contact us \n## // PRODUCTION\n\n### Create a contact message\ncurl -X POST https://fakad-student-application.onrender.com/application-form/contact-us/ -H \"Content-Type: application/json\" -d '{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@example.com\",\n  \"phone\": \"+1234567890\",\n  \"subject\": \"Inquiry about services\",\n  \"message\": \"I would like to know more about your training programs.\"\n}'\n\n### Get all contact messages\nGET https://fakad-student-application.onrender.com/application-form/contact-us/\n\n### Get a contact message by ID\nGET https://fakad-student-application.onrender.com/application-form/contact-us/668927861ce7bfba1f64ab5e\n// Replace :id with the actual ID of the contact message\n\n### Update a contact message\ncurl -X PUT https://fakad-student-application.onrender.com/application-form/contact-us/668927861ce7bfba1f64ab5e -H \"Content-Type: application/json\" -d '{\n  \"name\": \"Jane Doe\",\n  \"email\": \"janedoe@example.com\",\n  \"phone\": \"+0987654321\",\n  \"subject\": \"Updated inquiry\",\n  \"message\": \"I have more questions about your training programs.\"\n}'\n\n\n### Delete a contact message by ID\nDELETE https://fakad-student-application.onrender.com/application-form/contact-us/1234567890abcdef12345678\n\n\n-----------------------------------------------------------------\n### Create Account\n## PRODUCTION\n\n### Create an account message\ncurl -X POST https://fakad-student-application.onrender.com/application-form/create-account/ -H \"Content-Type: application/json\" -H \"Authorization: Bearer 7830b3752ea8ea01538d3123c7c512fd7fa26dbeb49c5b5030d30926f4f6e20d\" -d '{\n  \"fullName\": \"Jane John\",\n  \"username\": \"john\",\n  \"password\": \"newpassword123\",\n  \"confirmPassword\": \"newpassword123\",\n  \"email\": \"janedoe@example.com\",\n  \"phone\": \"+0987654321\",\n  \"dob\": \"1992-02-02\",\n  \"gender\": \"Female\",\n  \"terms\": true,\n  \"privacy\": true\n}'\n\n\n### Login \ncurl -X POST https://fakad-student-application.onrender.com/application-form/create-account/login -H \"Content-Type: application/json\" -d '{\n  \"username\": \"dagwan\",\n  \"password\": \"dagwanpan0810\"\n}'\n\n### Forgot Password\ncurl -X POST https://fakad-student-application.onrender.com/application-form/create-account/forgot-password -H \"Content-Type: application/json\" -d '{\n  \"email\": \"dagwanpan@gmail.com\"\n}'\n\n### Reset Password\ncurl -X POST https://fakad-student-application.onrender.com/application-form/create-account/reset-password/e85683ee38bf459b089ff4b028bc7836e3ff729853896ab7c351c5383c7bbb60 -H \"Content-Type: application/json\" -d '{\n  \"password\": \"dagwanpan0810\",\n  \"confirmPassword\": \"dagwanpan0810\"\n}'\n\n### Get all user accounts\ncurl -X GET https://fakad-student-application.onrender.com/application-form/create-account/ -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NjlmZTY0MDA2YWFmNDAxOTExNDJiMTQiLCJ1c2VybmFtZSI6ImRhZ3dhbiIsImlhdCI6MTcyMTc1NTIwMCwiZXhwIjoxNzIxNzU4ODAwfQ.7lhXzvfOq5gIjghE4lgq0IVjvb0rIADCXOXEgxvXA7A\"\n\n### Get a user account by ID\ncurl -X GET https://fakad-student-application.onrender.com/application-form/create-account/669fe64006aaf40191142b14 -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NjlmZTY0MDA2YWFmNDAxOTExNDJiMTQiLCJ1c2VybmFtZSI6ImRhZ3dhbiIsImlhdCI6MTcyMTc1NTIwMCwiZXhwIjoxNzIxNzU4ODAwfQ.7lhXzvfOq5gIjghE4lgq0IVjvb0rIADCXOXEgxvXA7A\"\n### Replace :id with the actual ID of the user account\n\n### Update a user account\ncurl -X PUT https://fakad-student-application.onrender.com/application-form/create-account/669fe64006aaf40191142b14 -H \"Content-Type: application/json\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NjlmZTY0MDA2YWFmNDAxOTExNDJiMTQiLCJ1c2VybmFtZSI6ImRhZ3dhbiIsImlhdCI6MTcyMTc1NTIwMCwiZXhwIjoxNzIxNzU4ODAwfQ.7lhXzvfOq5gIjghE4lgq0IVjvb0rIADCXOXEgxvXA7A\" -d '{\n  \"fullName\": \"Jane Doe\",\n  \"username\": \"janedoe\",\n  \"password\": \"newpassword123\",\n  \"confirmPassword\": \"newpassword123\",\n  \"email\": \"janedoe@example.com\",\n  \"phone\": \"+0987654321\",\n  \"dob\": \"1992-02-02\",\n  \"gender\": \"Female\",\n  \"terms\": true,\n  \"privacy\": true\n}'\n### Replace :id with the actual ID of the user account\n\n### Delete a user account by ID\ncurl -X DELETE https://fakad-student-application.onrender.com/application-form/create-account/669fe64006aaf40191142b14 -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NjlmZTY0MDA2YWFmNDAxOTExNDJiMTQiLCJ1c2VybmFtZSI6ImRhZ3dhbiIsImlhdCI6MTcyMTc1NTIwMCwiZXhwIjoxNzIxNzU4ODAwfQ.7lhXzvfOq5gIjghE4lgq0IVjvb0rIADCXOXEgxvXA7A\"\n### Replace :id with the actual ID of the user account",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080/application-form/api-docs",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter your bearer token in the format **Bearer <token>**"
+    }
+  },
+  "paths": {
+    "/application-form/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "middleName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "dateOfBirth": {
+                  "example": "any"
+                },
+                "maritalStatus": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "contactAddress": {
+                  "example": "any"
+                },
+                "occupation": {
+                  "example": "any"
+                },
+                "placeOfBirth": {
+                  "example": "any"
+                },
+                "stateOfOrigin": {
+                  "example": "any"
+                },
+                "localGovtArea": {
+                  "example": "any"
+                },
+                "homeTown": {
+                  "example": "any"
+                },
+                "villageAddress": {
+                  "example": "any"
+                },
+                "previousTraining": {
+                  "example": "any"
+                },
+                "previousTrainingDetails": {
+                  "example": "any"
+                },
+                "choiceOfTrainingProgramme": {
+                  "example": "any"
+                },
+                "guardian": {
+                  "example": "any"
+                },
+                "nextOfKin": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/application-form/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "middleName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "dateOfBirth": {
+                  "example": "any"
+                },
+                "maritalStatus": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "contactAddress": {
+                  "example": "any"
+                },
+                "occupation": {
+                  "example": "any"
+                },
+                "placeOfBirth": {
+                  "example": "any"
+                },
+                "stateOfOrigin": {
+                  "example": "any"
+                },
+                "localGovtArea": {
+                  "example": "any"
+                },
+                "homeTown": {
+                  "example": "any"
+                },
+                "villageAddress": {
+                  "example": "any"
+                },
+                "previousTraining": {
+                  "example": "any"
+                },
+                "previousTrainingDetails": {
+                  "example": "any"
+                },
+                "choiceOfTrainingProgramme": {
+                  "example": "any"
+                },
+                "passportPhotograph": {
+                  "example": "any"
+                },
+                "guardian": {
+                  "example": "any"
+                },
+                "nextOfKin": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contact-us/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "subject": {
+                  "example": "any"
+                },
+                "message": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contact-us/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "subject": {
+                  "example": "any"
+                },
+                "message": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/create-account/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fullName": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "confirmPassword": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "dob": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "terms": {
+                  "example": "any"
+                },
+                "privacy": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/create-account/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/create-account/forgot-password": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/create-account/reset-password/{token}": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                },
+                "confirmPassword": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/create-account/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fullName": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "confirmPassword": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "dob": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "terms": {
+                  "example": "any"
+                },
+                "privacy": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StudentApplication": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "middleName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "lastName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "gender": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "dateOfBirth": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date"
+                }
+              }
+            },
+            "maritalStatus": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "phoneNumber": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "contactAddress": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "occupation": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "placeOfBirth": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "stateOfOrigin": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "localGovtArea": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "homeTown": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "villageAddress": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "previousTraining": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "previousTrainingDetails": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "trainingPlaceName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "trainingAddress": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "trainingDuration": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "choiceOfTrainingProgramme": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "passportPhotograph": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "guardian": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "middleName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "lastName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "gender": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "maritalStatus": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "phoneNumber": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "email": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "contactAddress": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "occupation": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "placeOfBirth": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "stateOfOrigin": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "localGovtArea": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "homeTown": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "villageAddress": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "identificationType": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "identificationUpload": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "passportPhotograph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "nextOfKin": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "firstName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "middleName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "lastName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "gender": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "maritalStatus": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "relationship": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "phoneNumber": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "email": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "contactAddress": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "occupation": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "placeOfBirth": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "stateOfOrigin": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "localGovtArea": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "homeTown": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "villageAddress": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ContactUs": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "phone": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "subject": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "message": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "CreateAccount": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "fullName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "username": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "password": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "confirmPassword": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "phone": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "dob": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date"
+                }
+              }
+            },
+            "gender": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "terms": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "boolean"
+                }
+              }
+            },
+            "privacy": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
