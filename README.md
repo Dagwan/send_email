@@ -1,79 +1,79 @@
-# Fakad Infotech Application
+# Fakad Infotech Email System
 
-The Fakad Infotech Application is a RESTful API built using Node.js and Express.js. It allows users to perform CRUD (Create, Read, Update, Delete) operations on various service-related data. The API is equipped with endpoints to handle tasks such as creating new entries, retrieving existing ones, updating details, and deleting entries.
+The Fakad Infotech Email System is an email-sending application built using Node.js, Express.js, and Nodemailer. It allows users to send personalized emails with custom templates and attachments, making it an ideal tool for automating communication with clients, customers, or users. The system supports sending templated emails, such as welcome messages, newsletters, and notifications, and allows attachments like images or files to be included in the emails.
 
 ## Overview
 
-This project is an API designed to handle the backend functionality for Fakad Infotech Centre. It provides comprehensive CRUD operations to manage various aspects of the application, including:
+This email system is designed to enhance the communication infrastructure at Fakad Infotech by automating email processes. Key features include:
 
-- **Contact Page:** Perform CRUD operations on contact information.
-- **Student Application Forms:** Create, read, update, and delete student application forms.
-- **Account Management:** Manage user accounts, including functionalities for creating accounts, logging in, password recovery, and resetting passwords.
-
-With its user-friendly interface and robust functionality, this API enables seamless integration into your applications, ensuring efficient management and operations for backend services.
+- **Custom Templates:** Emails can be sent using dynamic EJS templates, allowing for personalized content based on the user's name, email, or other information.
+- **Attachments:** The system allows for file attachments, such as images or documents, to be included in emails.
+- **Automated Sending:** Emails can be triggered based on specific actions or events, making it easier to manage customer interactions.
 
 [API Documentation](https://fakad-student-application.onrender.com/application-form/api-docs/)
 
 ## Features
 
-- **Contact Page:** Manage contact information with the ability to create, retrieve, update, and delete entries.
-- **Student Application Forms:** Handle student applications by providing endpoints for creating new applications, retrieving existing ones, updating details, and deleting applications.
-- **Account Management:** Supports user account functionalities including account creation, login, password recovery, and password reset.
+- **Email Sending:** Send emails to users with customizable content, templates, and file attachments.
+- **EJS Templating:** Use EJS to create dynamic email templates with placeholders for user data (e.g., name, email).
+- **File Attachments:** Attach files to emails, such as images or PDFs, using Nodemailer.
+- **Error Handling:** The system includes error logging and graceful handling for failed email attempts.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
-- **Create Entries:** Users can add new entries to the database by providing relevant details in JSON format.
-- **Retrieve Entries:** The API allows users to fetch a list of all entries or retrieve a specific entry by its unique ID.
-- **Update Entries:** Users can easily update information using the PUT endpoint. They can send the updated details in JSON format to modify existing entries.
-- **Delete Entries:** Entries can be removed from the database using the DELETE endpoint. Users need to specify the entry's ID to delete a specific entry.
+## Project Structure
+- **Email Templates:** All email templates are stored in the views/emailTemplates directory, created using EJS templating.
+- **Controllers:** Logic for sending emails is handled in the controllers/emailController.js file.
+- **Routes:** Email-related API routes are defined in the routes/emailRoutes.js file, which includes an endpoint for sending emails.
 
+## Installation
+To install the necessary dependencies, run the following command:
+`npm install`
+
+## Usage
+1. **Start the Server:** Start the server locally using the following command:
+`npm start`
+
+2. **Send Email:** To send an email, make a POST request to the /api/email/send-email endpoint with the following JSON payload:
+`{`
+  `"email": "recipient@example.com",`
+  `"name": "John Doe",`
+  `"template": "welcome.ejs",`
+  `"attachments": [`
+    `{`
+      `"filename": "image.png",`
+      `"path": "path/to/image.png",`
+      `"cid": "unique@image.cid"`
+    `}`
+  `]`
+`}`
+3. **Local Testing:** Replace any environment URLs with http://localhost:3000 for local testing.
 
 ## Development Environment
 
-The Fakad Infotech Application was developed using the following tools:
-
 - **Node.js:** A JavaScript runtime environment for building server-side applications.
 - **Express.js:** A web application framework for Node.js that provides a robust set of features for web and mobile applications.
-- **MongoDB:** A NoSQL database used to store and manage data.
-- **Swagger:** Used to generate API documentation for easy reference and testing.
+- **Nodemailer:** A module for sending emails using Node.js.
+- **EJS:** A simple templating language used to create dynamic email templates.
 
-### Installation
-
-To install the necessary dependencies, run the following command:
-```bash
-npm install
-```
-
-## Local Testing
-
------------------------------------------------------------------
-For local testing, replace the base URL "https://fakad-student-application.onrender.com/application-form" with http://localhost:8080/application-form.
-
-For example, the endpoint "https://fakad-student-application.onrender.com/application-form" should be accessed as "http://localhost:8080/application-form" when testing locally. Everything else in the API request remains the same.
-
------------------------------------------------------------------
+## Error Handling
+In case of an error during email sending, the application logs the issue and returns an appropriate error message. For example, missing attachments or incorrect file paths will generate an error, which is logged for debugging purposes.
 
 ## Useful Websites
 
 - [Node.js Documentation](https://nodejs.org/en/docs/)
 - [Express.js Documentation](https://expressjs.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Jest Documentation](https://jestjs.io/docs/en/getting-started)
-- [Rest Client - For manual testing and API development](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+- [Nodemailer Documentation](https://nodemailer.com/)
+- [EJS Documentation](https://ejs.co/)
 
 ## Future Work
 
-While the current version of the Fakad Infotech Application provides essential functionality, there are several areas for improvement and future enhancements:
+Planned improvements for the email system include:
 
-- * Implement authentication and authorization mechanisms to secure API endpoints.
-- * Enhance error handling to provide informative error messages for API consumers.
-- * Add pagination support for retrieving large collections of data.
-- Implement rate limiting and request throttling to prevent abuse of the API.
-- Integrate additional data validation checks to ensure data integrity.
-- Improve logging and monitoring capabilities to track API usage and performance.
-- Expand the API documentation to include detailed usage examples and code snippets.
-y
-
+- * Allow scheduling emails for specific times.
+- * Implement functionality to send emails to multiple recipients at once.
+- * Add a feature to preview email templates before sending.
+- * Improve error messages and logging for better debugging.
 
 ### License
 
