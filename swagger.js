@@ -18,11 +18,11 @@ const doc = {
 
 Integrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.`,
   },
-  // Production
+  
    // Production
-  //  host: 'fakad-student-application.onrender.com',
+   host: 'https://send-email-517z.onrender.com',
    schemes: ['https'],
-
+   
   // Development
   host: process.env.HOST || 'localhost:3000',
   schemes: [process.env.SCHEMES || 'http'],
