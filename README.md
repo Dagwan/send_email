@@ -10,7 +10,9 @@ This email system is designed to enhance the communication infrastructure at Fak
 - **Attachments:** The system allows for file attachments, such as images or documents, to be included in emails.
 - **Automated Sending:** Emails can be triggered based on specific actions or events, making it easier to manage customer interactions.
 
-[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/)
+## API Documentation
+To explore the API and test the endpoints, you can use Swagger UI, which provides an interactive documentation interface. Access the Swagger UI at:
+`[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/)`
 
 ## Features
 
