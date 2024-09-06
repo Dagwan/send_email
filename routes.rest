@@ -1,5 +1,5 @@
 ###
-curl -X POST http://localhost:3000/send-welcome-email \
+curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
   "email": "dagwanpan@gmail.com",

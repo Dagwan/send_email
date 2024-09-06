@@ -24,7 +24,7 @@ Integrate this email service API into your applications to enhance communication
    schemes: ['https'],
    
   // Development
-  host: process.env.HOST || 'localhost:3000',
+  host: process.env.HOST || 'localhost:8080',
   schemes: [process.env.SCHEMES || 'http'],
 
   definitions: {
