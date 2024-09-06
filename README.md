@@ -2,6 +2,8 @@
 
 The Fakad Infotech Email System is an email-sending application built using Node.js, Express.js, and Nodemailer. It allows users to send personalized emails with custom templates and attachments, making it an ideal tool for automating communication with clients, customers, or users. The system supports sending templated emails, such as welcome messages, newsletters, and notifications, and allows attachments like images or files to be included in the emails.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Overview
 
 This email system is designed to enhance the communication infrastructure at Fakad Infotech by automating email processes. Key features include:
@@ -10,9 +12,15 @@ This email system is designed to enhance the communication infrastructure at Fak
 - **Attachments:** The system allows for file attachments, such as images or documents, to be included in emails.
 - **Automated Sending:** Emails can be triggered based on specific actions or events, making it easier to manage customer interactions.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## API Documentation
 To explore the API and test the endpoints, you can use Swagger UI, which provides an interactive documentation interface. Access the Swagger UI at:
-`[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/)`
+[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/). 
+
+You can find information on how to test the  swagger UI in the routes.rest.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
@@ -28,9 +36,13 @@ To explore the API and test the endpoints, you can use Swagger UI, which provide
 - **Controllers:** Logic for sending emails is handled in the controllers/emailController.js file.
 - **Routes:** Email-related API routes are defined in the routes/emailRoutes.js file, which includes an endpoint for sending emails.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Installation
 To install the necessary dependencies, run the following command:
 `npm install`
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Usage
 1. **Start the Server:** Start the server locally using the following command:
@@ -49,7 +61,10 @@ To install the necessary dependencies, run the following command:
     `}`
   `]`
 `}`
-3. **Local Testing:** Replace any environment URLs with http://localhost:3000 for local testing.
+3. **Local Testing:** Replace any environment URLs with http://localhost:8080 for local testing.
+
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Development Environment
 
@@ -58,8 +73,13 @@ To install the necessary dependencies, run the following command:
 - **Nodemailer:** A module for sending emails using Node.js.
 - **EJS:** A simple templating language used to create dynamic email templates.
 
+
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Error Handling
 In case of an error during email sending, the application logs the issue and returns an appropriate error message. For example, missing attachments or incorrect file paths will generate an error, which is logged for debugging purposes.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Useful Websites
 
@@ -67,6 +87,8 @@ In case of an error during email sending, the application logs the issue and ret
 - [Express.js Documentation](https://expressjs.com/)
 - [Nodemailer Documentation](https://nodemailer.com/)
 - [EJS Documentation](https://ejs.co/)
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Future Work
 
@@ -76,6 +98,8 @@ Planned improvements for the email system include:
 - * Implement functionality to send emails to multiple recipients at once.
 - * Add a feature to preview email templates before sending.
 - * Improve error messages and logging for better debugging.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ### License
 
