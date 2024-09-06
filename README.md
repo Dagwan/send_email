@@ -10,7 +10,7 @@ This email system is designed to enhance the communication infrastructure at Fak
 - **Attachments:** The system allows for file attachments, such as images or documents, to be included in emails.
 - **Automated Sending:** Emails can be triggered based on specific actions or events, making it easier to manage customer interactions.
 
-[API Documentation](https://fakad-student-application.onrender.com/application-form/api-docs/)
+[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/)
 
 ## Features
 
