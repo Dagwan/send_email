@@ -2,7 +2,7 @@
 curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
-  "email": ["dagwanpan@gmail.com"],
+  "email": "dagwanpan@gmail.com",
   "name": "John Doe",
   "link": "https://fakadinfotech.com"
 }'
@@ -11,7 +11,7 @@ curl -X POST http://localhost:8080/send-welcome-email \
 curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
-  "email": ["dagwanpan@gmail.com", "dagwanpan@outlook.com"],
+  "email": "dagwanpan@gmail.com",
   "name": "John Doe",
   "link": "https://fakadinfotech.com",
   "attachments": [
@@ -22,18 +22,55 @@ curl -X POST http://localhost:8080/send-welcome-email \
       "embed": true
     },
     {
-      "filename": "another-image.png",
-      "path": "public/images/logo.jpg",
-      "cid": "image@fakad",
-      "embed": true
-    },
-    {
       "filename": "document.pdf",
       "path": "public/docs/document.pdf",
       "embed": false
     }
   ]
 }'
+
+
+# ### Test with Attachments and Embedded Images:
+# curl -X POST http://localhost:8080/send-welcome-email \
+# -H "Content-Type: application/json" \
+# -d '{
+#   "email": ["dagwanpan@gmail.com", "dan21017@byui.edu"],
+#   "name": "John Doe",
+#   "link": ["https://fakadinfotech.com", "https://anotherlink.com"],
+#   "attachments": [
+#     {
+#       "filename": "logo.png",
+#       "path": "public/images/logo.jpg",
+#       "cid": "logo123",
+#       "embed": true
+#     },
+#     {
+#       "filename": "document.pdf",
+#       "path": "public/docs/document.pdf",
+#       "cid": "doc123",
+#       "embed": false
+#     }
+#   ]
+# }'
+
+
+
+# ### Test with Embedded Images Only:
+# curl -X POST http://localhost:8080/send-welcome-email \
+# -H "Content-Type: application/json" \
+# -d '{
+#   "email": ["dagwanpan@gmail.com", "dan21017@byui.edu"],
+#   "name": "John Doe",
+#   "link": ["https://fakadinfotech.com", "https://anotherlink.com"],
+#   "attachments": [
+#     {
+#       "filename": "logo.png",
+#       "path": "public/images/logo.jpg",
+#       "cid": "logo123",
+#       "embed": true
+#     }
+#   ]
+# }'
 
 
 
