@@ -2,113 +2,39 @@
 curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
-  "email": "dagwanpan@gmail.com",
+  "email": ["dagwanpan@gmail.com"],
   "name": "John Doe",
   "link": "https://fakadinfotech.com"
 }'
 
-###
+### with attachement
 curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
-  "email": "dan21017@byui.edu",
+  "email": ["dagwanpan@gmail.com", "dagwanpan@outlook.com"],
   "name": "John Doe",
-  "link": "https://fakadinfotech.com"
+  "link": "https://fakadinfotech.com",
+  "attachments": [
+    {
+      "filename": "logo.png",
+      "path": "public/images/logo.jpg",
+      "cid": "logo@fakad",
+      "embed": true
+    },
+    {
+      "filename": "another-image.png",
+      "path": "public/images/logo.jpg",
+      "cid": "image@fakad",
+      "embed": true
+    },
+    {
+      "filename": "document.pdf",
+      "path": "public/docs/document.pdf",
+      "embed": false
+    }
+  ]
 }'
 
-###
-curl -X POST http://localhost:8080/send-welcome-email \
--H "Content-Type: application/json" \
--d '{
-  "email": "dagwanpan@outlook.com",
-  "name": "John Doe",
-  "link": "https://fakadinfotech.com"
-}'
-
-###
-curl -X POST http://localhost:8080/send-welcome-email \
--H "Content-Type: application/json" \
--d '{
-  "email": "dagwanpan@yahoo.com",
-  "name": "John Doe",
-  "link": "https://fakadinfotech.com"
-}'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ###
-# curl -X POST http://localhost:3000/api/email/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": "dagwanpan@gmail.com",
-#   "name": "John Doe",
-#   "link": "https://fakadinfotech.com",
-#   "attachments": [
-#     {
-#       "filename": "welcome.jpg",
-#       "path": "./public/images/welcome.jpg",
-#       "cid": "welcome_image"
-#     }
-#   ]
-# }'
-
-# ###
-# curl -X POST http://localhost:3000/api/email/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": "dan21017@byui.edu",
-#   "name": "John Doe",
-#   "link": "https://fakadinfotech.com",
-#   "attachments": [
-#     {
-#       "filename": "welcome.jpg",
-#       "path": "./public/images/welcome.jpg",
-#       "cid": "welcome_image"
-#     }
-#   ]
-# }'
-
-# ###
-# curl -X POST http://localhost:3000/api/email/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": "dagwanpan@outlook.com",
-#   "name": "John Doe",
-#   "link": "https://fakadinfotech.com",
-#   "attachments": [
-#     {
-#       "filename": "welcome.jpg",
-#       "path": "./public/images/welcome.jpg",
-#       "cid": "welcome_image"
-#     }
-#   ]
-# }'
-
-# ###
-# curl -X POST http://localhost:3000/api/email/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": "dagwanpan@yahoo.com",
-#   "name": "John Doe",
-#   "link": "https://fakadinfotech.com",
-#   "attachments": [
-#     {
-#       "filename": "welcome.jpg",
-#       "path": "./public/images/welcome.jpg",
-#       "cid": "welcome_image"
-#     }
-#   ]
-# }'

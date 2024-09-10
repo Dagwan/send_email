@@ -1,11 +1,10 @@
-// controllers/emailController.js
 const transporter = require('../config/nodemailerConfig');
 const ejs = require('ejs');
 const path = require('path');
 
 /**
  * Sends an email using a specified EJS template.
- * @param {string} to - Recipient email address.
+ * @param {string | Array<string>} to - Recipient email address or array of addresses.
  * @param {string} subject - Subject of the email.
  * @param {string} templateName - Name of the EJS template file.
  * @param {Object} context - Context object to populate the template (e.g., name, links, etc.).
@@ -17,25 +16,31 @@ const sendEmail = async (to, subject, templateName, context, attachments = []) =
     // Path to the EJS template
     const templatePath = path.join(__dirname, '../views/emailTemplates', templateName);
 
-    // Check if the template file exists
-    if (!path.extname(templatePath)) {
-      throw new Error(`Template name must include file extension, e.g., 'welcome.ejs'`);
-    }
+    // Extract embedded images from attachments
+    const images = attachments.filter(att => att.embed).map(att => ({
+      cid: att.cid,
+      filename: att.filename,
+      path: att.path
+    }));
+
+    // Add the images array to the context object
+    context.images = images;
 
     // Render the HTML content with the EJS template and context
     const html = await ejs.renderFile(templatePath, context);
 
-    // Define email options, including recipients, subject, content, and attachments
+    // Define email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to,
+      to: Array.isArray(to) ? to.join(', ') : to, // Handle multiple recipients
       subject,
       html,
-      attachments: attachments || [] // Ensure attachments is always an array
+      attachments: attachments.map(att => ({
+        filename: att.filename,
+        path: att.path,
+        cid: att.embed ? att.cid : undefined // Only embed images if 'embed' is true
+      }))
     };
-
-    // Log mailOptions for debugging
-    console.log('Mail Options:', mailOptions);
 
     // Send the email using nodemailer
     const info = await transporter.sendMail(mailOptions);
@@ -49,4 +54,3 @@ const sendEmail = async (to, subject, templateName, context, attachments = []) =
 module.exports = {
   sendEmail
 };
-

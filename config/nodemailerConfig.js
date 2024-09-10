@@ -2,12 +2,17 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
-// Create transporter object using SMTP transport
+// Create transporter object using SMTP transport for Outlook
 const transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  host: 'smtp-mail.outlook.com', // Outlook SMTP server
+  port: process.env.EMAIL_PORT, // Port for TLS
+  secure: false, // Use TLS
   auth: {
-    user: process.env.EMAIL_USER, // Your Gmail address
-    pass: process.env.EMAIL_PASS, // Your Gmail App Password
+    user: process.env.EMAIL_USER, // Your Outlook email address
+    pass: process.env.EMAIL_PASS, // Your Outlook App Password
+  },
+  tls: {
+    ciphers: 'SSLv3', // Optionally ensure TLS settings
   }
 });
 
