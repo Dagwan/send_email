@@ -56,6 +56,8 @@
     <!-- Embedded Image using the direct URL from Imgur -->
     <div class="image-container">
       <img src="https://i.imgur.com/DjKKnUG.jpg" alt="Welcome Image">
+      https://imgur.com/JkOYdjx
+      https://via.placeholder.com/600x400
     </div>
 
     <p>If you have any questions or need assistance, feel free to reach out to us.</p>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <style>
     body {
@@ -51,11 +50,19 @@
   </div>
   <div class="content">
     <p>Hello <%= name %>,</p>
-    <p>Thank you for registering with Fakad Infotech Centre. We're thrilled to have you on board!</p>
+    <p>Thank you for joining us. We're excited to have you on board!</p>
+    <p>Here is the link you requested: <a href="<%= link %>">Click here</a></p>
+    
+    <!-- Message body included here -->
+    <p>
+      <%= message %>
+    </p>
 
-    <!-- Embedded Image using the direct URL from Imgur -->
-    <div class="image-container">
-      <img src="https://i.imgur.com/DjKKnUG.jpg" alt="Welcome Image">
+    <!-- Image included via URL -->
+    <div class="image-container"></div>
+      <% imageUrls.forEach(function(imageUrl) { %>
+        <img src="<%= imageUrl %>" alt="Welcome Image" />
+      <% }) %>
     </div>
 
     <p>If you have any questions or need assistance, feel free to reach out to us.</p>
@@ -72,5 +79,4 @@
     </p>
   </div>
 </body>
-
 </html>

@@ -1,77 +1,10 @@
-###
 curl -X POST http://localhost:8080/send-welcome-email \
 -H "Content-Type: application/json" \
 -d '{
-  "email": "dagwanpan@gmail.com",
-  "name": "John Doe",
-  "link": "https://fakadinfotech.com"
-}'
-
-### with attachement
-curl -X POST http://localhost:8080/send-welcome-email \
--H "Content-Type: application/json" \
--d '{
-  "email": "dagwanpan@gmail.com",
+  "email": ["dagwanpan@gmail.com", "dagwanpan@outlook.com"],
   "name": "John Doe",
   "link": "https://fakadinfotech.com",
-  "attachments": [
-    {
-      "filename": "logo.png",
-      "path": "public/images/logo.jpg",
-      "cid": "logo@fakad",
-      "embed": true
-    },
-    {
-      "filename": "document.pdf",
-      "path": "public/docs/document.pdf",
-      "embed": false
-    }
-  ]
+  "subject": "Welcome to Fakad Infotech",
+  "message": "We are glad to have you onboard!",
+  "imageUrls": ["https://i.imgur.com/DjKKnUG.jpg", "https://via.placeholder.com/600x400"]
 }'
-
-
-# ### Test with Attachments and Embedded Images:
-# curl -X POST http://localhost:8080/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": ["dagwanpan@gmail.com", "dan21017@byui.edu"],
-#   "name": "John Doe",
-#   "link": ["https://fakadinfotech.com", "https://anotherlink.com"],
-#   "attachments": [
-#     {
-#       "filename": "logo.png",
-#       "path": "public/images/logo.jpg",
-#       "cid": "logo123",
-#       "embed": true
-#     },
-#     {
-#       "filename": "document.pdf",
-#       "path": "public/docs/document.pdf",
-#       "cid": "doc123",
-#       "embed": false
-#     }
-#   ]
-# }'
-
-
-
-# ### Test with Embedded Images Only:
-# curl -X POST http://localhost:8080/send-welcome-email \
-# -H "Content-Type: application/json" \
-# -d '{
-#   "email": ["dagwanpan@gmail.com", "dan21017@byui.edu"],
-#   "name": "John Doe",
-#   "link": ["https://fakadinfotech.com", "https://anotherlink.com"],
-#   "attachments": [
-#     {
-#       "filename": "logo.png",
-#       "path": "public/images/logo.jpg",
-#       "cid": "logo123",
-#       "embed": true
-#     }
-#   ]
-# }'
-
-
-
-
