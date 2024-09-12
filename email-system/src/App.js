@@ -5,11 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Include Bootstrap for styling
 const App = () => {
   const [emails, setEmails] = useState(['']); // Array of email addresses
   const [subject, setSubject] = useState('');
-  const [link, setLink] = useState('');
+  const [link, setLink] = useState(''); // Optional field
   const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(''); // Optional field
   const [imageUrls, setImageUrls] = useState(['']); // Array to hold image URLs
   const [feedback, setFeedback] = useState('');
+
+  // Clear feedback message after a few seconds
+  const clearFeedback = () => {
+    setTimeout(() => {
+      setFeedback('');
+    }, 3000);
+  };
 
   // Handle adding new email input fields
   const handleAddEmail = () => {
@@ -53,8 +60,10 @@ const App = () => {
         headers: { 'Content-Type': 'application/json' },
       });
       setFeedback('Email sent successfully!');
+      clearFeedback();
     } catch (error) {
       setFeedback(`Failed to send email: ${error.message}`);
+      clearFeedback();
     }
   };
 
@@ -69,15 +78,16 @@ const App = () => {
       {/* Form */}
       <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-white">
         <div className="form-group">
-          <label>Recipient Emails</label>
+          <label style={{ fontSize: '18px' }}>Recipients' Email Addresses</label>
           {emails.map((email, index) => (
             <div key={index} className="input-group mb-3">
               <input
                 type="email"
                 className="form-control"
+                style={{ fontSize: '16px', height: '45px' }}
                 value={email}
                 onChange={(e) => handleEmailChange(index, e.target.value)}
-                placeholder={`Email ${index + 1}`}
+                placeholder={`Recipient's Email ${index + 1}`}
                 required
               />
               {emails.length > 1 && (
@@ -101,56 +111,62 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label>Name</label>
+          <label style={{ fontSize: '18px' }}>Your Name</label>
           <input
             type="text"
             className="form-control"
+            style={{ fontSize: '16px', height: '45px' }}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
             required
           />
         </div>
 
         <div className="form-group">
-          <label>Subject</label>
+          <label style={{ fontSize: '18px' }}>Email Subject</label>
           <input
             type="text"
             className="form-control"
+            style={{ fontSize: '16px', height: '45px' }}
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
+            placeholder="Enter email subject"
             required
           />
         </div>
 
         <div className="form-group">
-          <label>Link</label>
+          <label style={{ fontSize: '18px' }}>Optional Link</label>
           <input
             type="url"
             className="form-control"
+            style={{ fontSize: '16px', height: '45px' }}
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            required
+            placeholder="Include a link (optional)"
           />
         </div>
 
         <div className="form-group">
-          <label>Message Body</label>
+          <label style={{ fontSize: '18px' }}>Message Body (Optional)</label>
           <textarea
             className="form-control"
+            style={{ fontSize: '16px', height: '200px' }}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            rows="4"
-            required
+            placeholder="Enter a personalized message"
           />
         </div>
 
         <div className="form-group">
-          <label>Image URLs (Optional)</label>
+          <label style={{ fontSize: '18px' }}>Image URLs (Optional)</label>
           {imageUrls.map((url, index) => (
             <div key={index} className="input-group mb-3">
               <input
                 type="url"
                 className="form-control"
+                style={{ fontSize: '16px', height: '45px' }}
                 value={url}
                 onChange={(e) => handleImageUrlChange(index, e.target.value)}
                 placeholder={`Image URL ${index + 1}`}
@@ -175,9 +191,15 @@ const App = () => {
           </button>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">Send Email</button>
+        <button type="submit" className="btn btn-primary w-100" style={{ fontSize: '18px', padding: '10px 20px' }}>
+          Send Email
+        </button>
 
-        {feedback && <div className="alert alert-info mt-4">{feedback}</div>}
+        {feedback && (
+          <div className="mt-3 alert alert-success" role="alert" style={{ fontSize: '16px' }}>
+            {feedback}
+          </div>
+        )}
       </form>
 
       {/* Footer */}
