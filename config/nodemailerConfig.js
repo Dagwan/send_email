@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   port: process.env.EMAIL_PORT || 587, // Port for TLS
   secure: false, // Use TLS
   auth: {
-    user: process.env.EMAIL_USER, // Your Outlook email address
-    pass: process.env.EMAIL_PASS, // Your Outlook App Password
+    user: process.env.EMAIL_USER, //  Outlook email address
+    pass: process.env.EMAIL_PASS, //  Outlook App Password
   },
   tls: {
     ciphers: 'SSLv3', // Ensure TLS settings

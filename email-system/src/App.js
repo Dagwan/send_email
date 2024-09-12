@@ -72,19 +72,19 @@ const App = () => {
       {/* Header */}
       <header className="mb-4">
         <h1 className="text-center">Welcome to Fakad Infotech</h1>
-        <p className="text-center text-muted">Send welcome emails to multiple recipients with personalized messages.</p>
+        <p className="text-center text-muted">Send emails to multiple recipients with personalized messages.</p>
       </header>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-white">
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Recipients' Email Addresses</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Recipients' Email Addresses</label>
           {emails.map((email, index) => (
             <div key={index} className="input-group mb-3">
               <input
                 type="email"
                 className="form-control"
-                style={{ fontSize: '16px', height: '45px' }}
+                style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '4rem' }}
                 value={email}
                 onChange={(e) => handleEmailChange(index, e.target.value)}
                 placeholder={`Recipient's Email ${index + 1}`}
@@ -111,11 +111,11 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Your Name</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Your Name</label>
           <input
             type="text"
             className="form-control"
-            style={{ fontSize: '16px', height: '45px' }}
+            style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '4rem' }}
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
@@ -124,11 +124,11 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Email Subject</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Email Subject</label>
           <input
             type="text"
             className="form-control"
-            style={{ fontSize: '16px', height: '45px' }}
+            style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '4rem' }}
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             placeholder="Enter email subject"
@@ -137,11 +137,11 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Optional Link</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Optional Link</label>
           <input
             type="url"
             className="form-control"
-            style={{ fontSize: '16px', height: '45px' }}
+            style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '4rem' }}
             value={link}
             onChange={(e) => setLink(e.target.value)}
             placeholder="Include a link (optional)"
@@ -149,10 +149,10 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Message Body (Optional)</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Message Body (Optional)</label>
           <textarea
             className="form-control"
-            style={{ fontSize: '16px', height: '200px' }}
+            style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '200px' }}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Enter a personalized message"
@@ -160,13 +160,13 @@ const App = () => {
         </div>
 
         <div className="form-group">
-          <label style={{ fontSize: '18px' }}>Image URLs (Optional)</label>
+          <label style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>Image URLs (Optional)</label>
           {imageUrls.map((url, index) => (
             <div key={index} className="input-group mb-3">
               <input
                 type="url"
                 className="form-control"
-                style={{ fontSize: '16px', height: '45px' }}
+                style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif', height: '4rem' }}
                 value={url}
                 onChange={(e) => handleImageUrlChange(index, e.target.value)}
                 placeholder={`Image URL ${index + 1}`}
@@ -191,12 +191,12 @@ const App = () => {
           </button>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100" style={{ fontSize: '18px', padding: '10px 20px' }}>
+        <button type="submit" className="btn btn-primary w-100" style={{ fontSize: '1.1rem', fontFamily: 'Helvetica, Arial, sans-serif', padding: '10px 20px' }}>
           Send Email
         </button>
 
         {feedback && (
-          <div className="mt-3 alert alert-success" role="alert" style={{ fontSize: '16px' }}>
+          <div className="mt-3 alert alert-success" role="alert" style={{ fontSize: '1rem', fontSize: '1rem', fontFamily: 'Helvetica, Arial, sans-serif' }}>
             {feedback}
           </div>
         )}
@@ -204,7 +204,7 @@ const App = () => {
 
       {/* Footer */}
       <footer className="mt-5 text-center">
-        <p className="text-muted">&copy; 2024 Fakad Infotech</p>
+        <p className="text-muted">&copy; 2024 All rights reserved. Fakad Infotech Centre</p>
       </footer>
     </div>
   );
