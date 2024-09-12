@@ -71,7 +71,7 @@ const App = () => {
     <div className="container mt-5">
       {/* Header */}
       <header className="mb-4">
-        <h1 className="text-center">Welcome Email Sender</h1>
+        <h1 className="text-center">Welcome to Fakad Infotech</h1>
         <p className="text-center text-muted">Send welcome emails to multiple recipients with personalized messages.</p>
       </header>
 
