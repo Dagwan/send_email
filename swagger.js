@@ -20,7 +20,7 @@ Integrate this email service API into your applications to enhance communication
   },
   
    // Production
-   hosts: 'https://send-email-517z.onrender.com/send-welcome-email/api-docs/',
+   hosts: 'https://send-email-517z.onrender.com/api-docs/',
    schemes: [process.env.SCHEMES || 'https'],
    
   // Development
