@@ -1,10 +1,76 @@
-curl -X POST http://localhost:8080/send-welcome-email \
--H "Content-Type: application/json" \
--d '{
-  "email": ["dagwanpan@gmail.com", "dagwanpan@outlook.com"],
-  "name": "John Doe",
-  "link": "https://fakadinfotech.com",
-  "subject": "Welcome to Fakad Infotech",
-  "message": "We are glad to have you onboard!",
-  "imageUrls": ["https://i.imgur.com/DjKKnUG.jpg", "https://via.placeholder.com/600x400"]
-}'
+# Send Welcome Email Endpoint
+
+POST http://localhost:8080/send-invitation-email
+Content-Type: application/json
+
+{
+  "email": ["dagwanpan@gmail.com", "dagwanpn@outlook.com", "dn21017@byui.edu"],
+  "name": ["Dr. Danladi Dagwan", "Mr. Fakad Fakad", "Prof. John Doe"],
+  "subject": "Invitation to Attend the Dubai Leadership Summit & Nomination to Receive Honorary Doctorate Degree – October 28 and 29, 2024.",
+  "dynamicContent": {
+    "subjectHeading": "Invitation to Attend the Dubai Leadership Summit & Nomination to Receive Honorary Doctorate Degree – October 28 and 29, 2024.",
+    "introParagraph": "You are cordially invited to attend the Dubai Leadership Summit designed to help you discover how you can dramatically increase your growth and worth in the next 10 years. This summit is organized by the London Graduate School and the Commonwealth University of Business Arts and Technology. To learn more, visit our website: <a href='https://fakad-infotech-centre.netlify.app/'>Fakad Infotech</a>.",
+    "firstImage": "https://i.postimg.cc/XvgYNXdb/image1.jpg",
+    "aboutHeading": "About The Dubai Leadership Summit",
+    "aboutParagraph": "This 2-day intensive leadership summit and coaching is led by a team of management experts trained from top universities across the globe, including Harvard University, MIT, Edinburgh University, and Heriot-Watt University.",
+    "secondImage": "https://i.postimg.cc/Zqmqh69H/image2.jpg",
+    "invitationHeading": "Why Are We Inviting You?",
+    "invitationParagraph": "You are invited to share your ideas and perspectives with other important leaders. The purpose is to spark a process that will bring about dramatic growth in all directions of your life over the next ten years.",
+    "detailsHeading": "Details of the Summit",
+    "detailsList": [
+      "Summit Theme: Growth and Sustainability: Strategies for Top Leaders, Professionals & Entrepreneurs",
+      "Summit Fees: Slashed from US$5,500 down to US$4,500",
+      "Date: October 28 – 29, 2024. (Arrivals & Registration October 27, 2024).",
+      "Time: 9 am – 5 pm Daily",
+      "Venue: Jacobs Garden Hotel, Rolla Street, Bur Dubai, UAE."
+    ],
+    "additionalContent": [
+      {
+        "heading": "Key Topics to be Covered",
+        "paragraph": "1. The 15 Laws of Growth by John Maxwell 2. The Power of Strategic Visioning 3. Emotional Intelligence and Neuro-Linguistic Programming 4. The 6 By 6 Strategy for Transformational Leadership...",
+        "image": "https://i.postimg.cc/9FvMJ6Cv/image3.jpg"
+      }
+    ],
+    "masterClassHeading": "Master Class Training and Certification for Participants",
+    "masterClassParagraph": "This unique seminar will feature hands-on sessions led by experts from Harvard and UK universities, culminating in a Certificate of Professional Studies from the London Graduate School.",
+    "weAreInHeading": "We Are in Over 85 Countries",
+    "weAreInParagraph": "With an alumni and faculty presence in 85 nations, our shared practices inspire change and growth across leadership, business, and management.",
+    "nominationHeading": "Nomination to Receive Honorary Doctorate Degree",
+    "nominationParagraph": "As part of the summit, select attendees are nominated to receive the Commonwealth University Honorary Doctorate in recognition of their contributions. High-Performance Leaders are invited to this exclusive event as a celebration of their achievements.",
+    "otherCostsHeading": "Other Costs",
+    "otherCostsList": [
+      "Academic Gown: $550 to buy, $100 to hire",
+      "Graduation Dinner: $200 for recipients, $100 for guests",
+      "Accommodation options (special discounts available):",
+      "Jacobs Garden Hotel: $100 single, $130 double",
+      "Rolla Residence Hotel: $80 single, $100 double"
+    ],
+    "paymentInfoHeading": "How to Pay Your Participation Fee",
+    "paymentInfoParagraph": "The participation fee is US$4,500, payable via the following details:",
+    "paymentDetails": [
+      {
+        "type": "US Dollar Account",
+        "bankName": "Union Bank Nig Plc",
+        "intermediaryBank": "Citibank New York",
+        "swiftCode": "CITIUS33",
+        "routingNumber": "021000089",
+        "beneficiaryName": "Commonwealth University Consultants",
+        "beneficiaryAccount": "0086853221"
+      }
+    ],
+  "thirdPartyPaymentInfo": "If sponsored by a third party, please notify us in advance.",
+  "distanceLearningInfo": "We offer participation via Open Distance Learning for those unable to attend in person. Contact info@londongs.co.uk for details.",
+  "endowmentInfo": "Recipients of the Honorary Doctorate Degree Award are invited to contribute to the University's Endowment Fund, aiding in campus development.",
+  "enrolNowInfo": "To accept, email info@londongs.co.uk or call +44 778 677 6802, attaching your profile for planning and awards committee review.",
+  "closingLine": "Yours sincerely",
+  "signatureImage": "https://i.postimg.cc/Bb4ySQTd/signature.jpg", 
+  "SignName": "Ms. Sadiksha Rai",
+  "letterheadImage": "https://i.postimg.cc/Y9qqvkzm/heading.jpg",
+  "footerText": "If you no longer wish to receive emails from us, you can <a href='https://www.londongs.co.uk/unsubscribe' target='_blank'>unsubscribe here</a>.",
+  "footerImage": "https://i.postimg.cc/RZK08g0q/footer.jpg",
+   "viewInBrowserLink": "https://www.londongs.co.uk/view-email",
+  "unsubscribeLink": "https://www.londongs.co.uk/unsubscribe"
+  
+}
+}
+

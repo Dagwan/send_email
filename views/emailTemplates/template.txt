@@ -91,6 +91,139 @@
 
 
 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: #4CAF50;
+      /* Fewwb color for a tech vibe */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .content {
+      max-width: 600px;
+      /* Center content with a max width */
+      margin: 20px auto;
+      /* Center the content block */
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      background-color: #e9ecef;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+    }
+
+    .image-container {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      /* Responsive grid */
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #007bff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .cta {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Welcome to Fakad Infotech Centre</h1>
+    <p>Your Gateway to Innovative Software Solutions</p>
+  </div>
+  <div class="content">
+    <p>Hello <%= name %>,</p>
+
+    <p>Trust this message finds you well. Thank you for your interest in Fakad Infotech. We are excited to introduce you to our cutting-edge software
+      solutions designed to elevate your business.</p>
+
+    <!-- Dynamic image layout -->
+    <div class="image-container">
+      <% imageUrls.forEach(function(imageUrl) { %>
+        <img src="<%= imageUrl %>" alt="Software Screenshot" />
+        <% }) %>
+    </div>
+
+    <!-- Message Body -->
+    <p>
+      <%= message %>
+    </p>   
+  
+<h3>What we Offer</h3>
+    <ul>
+      <li>Advanced Analytics Dashboard: Gain valuable insights with our interactive analytics dashboard. Track performance metrics, visualize data trends, and make informed decisions with real-time reporting and customizable widgets.</li>
+      <li>Seamless Integration: Easily integrate our software with your existing tools and systems. Our platform supports a wide range of integrations, ensuring a smooth workflow and improved efficiency across your operations.</li>
+      <li>Enhanced Security Measures: Protect your data with our top-notch security features. Enjoy peace of mind with advanced encryption, multi-factor authentication, and regular security updates to safeguard your information against potential threats.</li>
+    </ul>
+
+    <p>If you have any questions or need assistance, feel free to reach out to us <a href="<%= link %>">Click here</a> to explore more about us.</p>
+
+    <p>Best Regards,<br>Fakad Infotech Team</p>
+  </div>
+  <div class="footer">
+    <p>Fakad Infotech<br>
+      Suite Pb19, Virginia Pavilion Plaza, Behind Eco-Bank, Federal Housing Junction, Kubwa, FCT-Abuja<br>
+      <a href="mailto:info@fakadinfotech.com" style="color: #007bff;">info@fakadinfotech.com</a>
+    </p>
+  </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

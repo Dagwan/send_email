@@ -26,7 +26,7 @@ app.use('/', require('./routes'));
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Welcome to Fakad Infotech Centre Email System API');
+  res.send('Welcome to London Graduate Email System API');
 });
 
 // Global error handling

@@ -4,11 +4,6 @@ const path = require('path');
 
 /**
  * Sends an email using a specified EJS template.
- * @param {string[]} to - Array of recipient email addresses.
- * @param {string} subject - Subject of the email.
- * @param {string} templateName - Name of the EJS template file.
- * @param {Object} context - Context object to populate the template (e.g., name, links, etc.).
- * @returns {Promise<void>}
  */
 const sendEmail = async (to, subject, templateName, context) => {
   try {
@@ -23,69 +18,57 @@ const sendEmail = async (to, subject, templateName, context) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.response);
+    console.log('Invitation Email sent successfully to:', to, 'Response:', info.response);
   } catch (error) {
     console.error('Error sending email:', error);
     throw new Error(`Failed to send email: ${error.message}`);
   }
 };
 
+/**
+ * Sends personalized emails to multiple recipients.
+ */
+const sendPersonalizedEmails = async (emails, names, subject, dynamicContent) => {
+  try {
+    for (let i = 0; i < emails.length; i++) {
+      const personalizedContext = {
+        name: names[i],
+        ...dynamicContent  // Spread dynamic content for flexibility
+      };
 
-module.exports = {
-  sendEmail
+      await sendEmail(emails[i], subject, 'londonSchool.ejs', personalizedContext);
+    }
+  } catch (error) {
+    console.error('Error sending personalized emails:', error);
+    throw new Error(`Failed to send personalized emails: ${error.message}`);
+  }
 };
 
+/**
+ * Sends a single dynamic content email.
+ */
+const sendDynamicEmail = async (to, subject, dynamicContent) => {
+  try {
+    const templatePath = path.join(__dirname, '../views/emailTemplates/londonSchool.ejs');
+    const html = await ejs.renderFile(templatePath, dynamicContent);
 
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to,
+      subject,
+      html
+    };
 
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Dynamic email sent successfully to:', to, 'Response:', info.response);
+  } catch (error) {
+    console.error('Error sending dynamic email:', error);
+    throw new Error(`Failed to send dynamic email: ${error.message}`);
+  }
+};
 
-
-
-
-
-// const transporter = require('../config/nodemailerConfig');
-// const ejs = require('ejs');
-// const path = require('path');
-
-// /**
-//  * Sends an email using a specified EJS template.
-//  * @param {string[]} to - Array of recipient email addresses.
-//  * @param {string} subject - Subject of the email.
-//  * @param {string} templateName - Name of the EJS template file.
-//  * @param {Object} context - Context object to populate the template (e.g., name, links, etc.).
-//  * @param {Array} [attachments=[]] - Optional array of attachment objects for including files.
-//  * @param {Array} [imageUrls=[]] - Array of image URLs to include in the email.
-//  * @returns {Promise<void>}
-//  */
-// const sendEmail = async (to, subject, templateName, context, attachments = [], imageUrls = []) => {
-//   try {
-//     // Path to the EJS template
-//     const templatePath = path.join(__dirname, '../views/emailTemplates', templateName);
-
-//     // Render the HTML content with the EJS template and context
-//     const html = await ejs.renderFile(templatePath, context);
-
-//     // Define email options
-//     const mailOptions = {
-//       from: process.env.EMAIL_USER,
-//       to,
-//       subject,
-//       html,
-//       attachments: attachments.map((attachment) => ({
-//         filename: attachment.filename,
-//         content: attachment.content,
-//         contentDisposition: attachment.embed ? 'inline' : 'attachment'
-//       }))
-//     };
-
-//     // Send the email using nodemailer
-//     const info = await transporter.sendMail(mailOptions);
-//     console.log('Email sent successfully:', info.response);
-//   } catch (error) {
-//     console.error('Error sending email:', error);
-//     throw new Error(`Failed to send email: ${error.message}`);
-//   }
-// };
-
-// module.exports = {
-//   sendEmail
-// };
+module.exports = {
+  sendEmail,
+  sendPersonalizedEmails,
+  sendDynamicEmail
+};

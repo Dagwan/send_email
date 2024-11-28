@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const doc = {
   info: {
-    title: 'Fakad Infotech Centre Email Service API',
+    title: 'Email Service API',
     description: `API documentation for the Fakad Infotech Centre Email Service. This API allows you to send emails using EJS templates and handle optional attachments. It supports sending various types of emails, such as welcome emails, and provides functionality for adding attachments if needed.
 
 **Key Features:**
