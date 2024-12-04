@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Custom Email Service API",
-    "description": "API documentation for the Fakad Infotech Centre Email Service. This API allows you to send emails using EJS templates and handle optional attachments. It supports sending various types of emails, such as welcome emails, and provides functionality for adding attachments if needed.\n\n**Key Features:**\n\n- **Send Welcome Email:** Use the POST endpoint to send a welcome email to a recipient. This endpoint supports sending emails with a predefined template ('welcome.ejs') and allows for optional attachments.\n\n**Sample Requests and Responses:** Detailed sample JSON requests and responses are provided for each endpoint to illustrate how to use the API effectively.\n\n**Error Handling:** The API includes error responses and status codes to assist you in case of any issues.\n\n**API Documentation:** Explore the detailed API documentation below to learn how to use each endpoint, the expected request structures, and response formats.\n\nIntegrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.",
+    "title": "London Graduate School Email Service API",
+    "description": "API documentation for the London Graduate School Email Service. This API allows you to send emails using EJS templates and handle optional attachments. It supports sending various types of emails, such as invitation emails, and provides functionality for adding attachments if needed.\n\n**Key Features:**\n\n- **Send Invitation Email:** Use the POST endpoint to send invitation emails with dynamic content like headings, paragraphs, and lists of topics. It allows for multiple recipients, attachments, and includes links to external content.\n- **Send Welcome Email:** Use the POST endpoint to send a welcome email to a recipient. This endpoint supports sending emails with a predefined template ('welcome.ejs') and allows for optional attachments.\n\n**Sample Requests and Responses:** Detailed sample JSON requests and responses are provided for each endpoint to illustrate how to use the API effectively.\n\n**Error Handling:** The API includes error responses and status codes to assist you in case of any issues.\n\n**API Documentation:** Explore the detailed API documentation below to learn how to use each endpoint, the expected request structures, and response formats.\n\nIntegrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.",
     "version": "1.0.0"
   },
   "host": "localhost:8080/send-invitation-email",
@@ -103,15 +103,24 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "example": "string"
+                  "example": "array"
                 },
-                "format": {
-                  "type": "string",
-                  "example": "email"
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "format": {
+                      "type": "string",
+                      "example": "email"
+                    }
+                  }
                 },
                 "description": {
                   "type": "string",
-                  "example": "Recipient email address."
+                  "example": "List of recipient email addresses."
                 }
               }
             },
@@ -120,28 +129,507 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "example": "string"
+                  "example": "array"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
                 },
                 "description": {
                   "type": "string",
-                  "example": "Name of the recipient."
+                  "example": "List of recipient names."
                 }
               }
             },
-            "link": {
+            "subject": {
               "type": "object",
               "properties": {
                 "type": {
                   "type": "string",
                   "example": "string"
                 },
-                "format": {
-                  "type": "string",
-                  "example": "uri"
-                },
                 "description": {
                   "type": "string",
-                  "example": "Link to include in the email."
+                  "example": "Subject of the email."
+                }
+              }
+            },
+            "dynamicContent": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "subjectHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "introParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "firstImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "aboutHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "aboutParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "secondImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "invitationHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "invitationParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "detailsHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "detailsList": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "keyTopicsHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "keyTopicsList": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "keyTopicsImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "masterClassHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "masterClassParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "weAreInHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "weAreInParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "nominationHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "nominationParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "otherCostsHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "otherCostsList": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "paymentInfoHeading": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "paymentInfoParagraph": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "paymentDetails": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "bankName": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "intermediaryBank": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "swiftCode": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "routingNumber": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "beneficiaryName": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                },
+                                "beneficiaryAccount": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "thirdPartyPaymentInfo": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "distanceLearningInfo": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "endowmentInfo": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "enrolNowInfo": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "closingLine": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "signatureImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "SignName": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "letterheadImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "footerText": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "footerImage": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "viewInBrowserLink": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    },
+                    "unsubscribeLink": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "uri"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -218,7 +706,8 @@
           "example": [
             "email",
             "name",
-            "link"
+            "subject",
+            "dynamicContent"
           ],
           "items": {
             "type": "string"

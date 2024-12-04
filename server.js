@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const emailRoutes = require('./routes/emailRoutes'); // Ensure the correct path
+const emailRoutes = require('./routes/emailRoutes'); 
 const path = require('path');
 const cors = require('cors'); 
 
@@ -26,7 +26,7 @@ app.use('/', require('./routes'));
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Welcome to London Graduate Email System API');
+  res.send('Welcome to londons Email System API');
 });
 
 // Global error handling

@@ -1,12 +1,12 @@
-# Fakad Infotech Email System
+#  London Graduate School Email System
 
-The Fakad Infotech Email System is an email-sending application built using Node.js, Express.js, and Nodemailer. It allows users to send personalized emails with custom templates and attachments, making it an ideal tool for automating communication with clients, customers, or users. The system supports sending templated emails, such as welcome messages, newsletters, and notifications, and allows attachments like images or files to be included in the emails.
+The London Graduate School Email System is an email-sending application built using Node.js, Express.js, and Nodemailer. It allows users to send personalized emails with custom templates and attachments, making it an ideal tool for automating communication with clients, customers, or users. The system supports sending templated emails, such as welcome messages, newsletters, and notifications, and allows attachments like images or files to be included in the emails.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
 ## Overview
 
-This email system is designed to enhance the communication infrastructure at Fakad Infotech by automating email processes. Key features include:
+This email system is designed to enhance the communication infrastructure at London Graduate School by automating email processes. Key features include:
 
 - **Custom Templates:** Emails can be sent using dynamic EJS templates, allowing for personalized content based on the user's name, email, or other information.
 - **Attachments:** The system allows for file attachments, such as images or documents, to be included in emails.

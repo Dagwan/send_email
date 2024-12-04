@@ -95,7 +95,6 @@
       <%= subjectHeading %>
     </h2>
 
-
     <!-- Dynamic Paragraphs and Images -->
     <p>
       <%- introParagraph %>
@@ -143,53 +142,133 @@
               <% } %>
     </ul>
 
-    <!-- Further Dynamic Content -->
-    <% if (additionalContent && additionalContent.length) { %>
-      <% additionalContent.forEach(function(content) { %>
-        <h3>
-          <%= content.heading %>
-        </h3>
-        <p>
-          <%- content.paragraph %>
-        </p>
-        <% if (content.image) { %>
-          <div class="image-container">
-            <img src="<%= content.image %>" alt="Related Image">
-          </div>
-          <% } %>
-            <% }); %>
+    <!-- Key Topics Section -->
+    <h3>
+      <%= keyTopicsHeading %>
+    </h3>
+    <ol>
+      <% keyTopicsList.forEach((topic, index)=> { %>
+        <li>
+          <%= topic %>
+        </li>
+        <% }); %>
+    </ol>
+    <div class="image-container">
+      <img src="<%= keyTopicsImage %>" alt="Key Topics Image">
+    </div>
+
+
+
+    <!-- Master Class Section -->
+    <h3>
+      <%= masterClassHeading %>
+    </h3>
+    <p>
+      <%- masterClassParagraph %>
+    </p>
+
+    <!-- Global Presence -->
+    <h3>
+      <%= weAreInHeading %>
+    </h3>
+    <p>
+      <%- weAreInParagraph %>
+    </p>
+
+    <!-- Honorary Doctorate Nomination -->
+    <h3>
+      <%= nominationHeading %>
+    </h3>
+    <p>
+      <%- nominationParagraph %>
+    </p>
+
+    <!-- Other Costs -->
+    <h3>
+      <%= otherCostsHeading %>
+    </h3>
+    <ul>
+      <% if (otherCostsList && otherCostsList.length) { %>
+        <% otherCostsList.forEach(cost=> { %>
+          <li>
+            <%- cost %>
+          </li>
+          <% }); %>
+            <% } else { %>
+              <li>No additional costs available at the moment.</li>
               <% } %>
+    </ul>
 
-                <!-- Closing Line -->
-                <p>
-                  <%= closingLine %>
-                </p>
-                <!-- Signature Image -->
-                <!-- <div class="image-container"> -->
+    <!-- Payment Information -->
+    <h3>
+      <%= paymentInfoHeading %>
+    </h3>
+    <p>
+      <%- paymentInfoParagraph %>
+    </p>
+    <ul>
+      <% if (paymentDetails && paymentDetails.length) { %>
+        <% paymentDetails.forEach(payment=> { %>
 
-                  <img src="<%= signatureImage %>" alt="Signature"><br>
-                <!-- </div> -->
+          <strong>Type:</strong>
+          <%= payment.type %><br>
+            <strong>Bank Name:</strong>
+            <%= payment.bankName %><br>
+              <strong>SWIFT Code:</strong>
+              <%= payment.swiftCode %><br>
+                <strong>Routing Number:</strong>
+                <%= payment.routingNumber %><br>
+                  <strong>Beneficiary Name:</strong>
+                  <%= payment.beneficiaryName %><br>
+                    <strong>Beneficiary Account:</strong>
+                    <%= payment.beneficiaryAccount %>
 
-                <!-- Signatory Line -->
+                      <% }); %>
+                        <% } %>
+    </ul>
 
-                <%= SignName %>
+    <!-- Third-Party Payment Info -->
+    <p><%- thirdPartyPaymentInfo %></p>
+
+    <!-- Distance Learning Info -->
+    <p><%- distanceLearningInfo %></p>
+
+    <!-- Endowment Info -->
+    <p><%- endowmentInfo %></p>
+
+    <!-- Enrollment Information -->
+    <p><%- enrolNowInfo %></p>
+
+    <!-- Closing Line -->
+    <p>
+      <%= closingLine %>
+    </p>
+
+    <!-- Closing Line -->
+    <p>
+      <%= closingLine %>
+    </p>
+
+
+    <img src="<%= signatureImage %>" alt="Signature"><br>
+
+
+    <!-- Signatory Line -->
+
+    <%= SignName %>
   </div>
 
   <!-- Footer Image -->
   <div class="footer">
-    <div class="image-containe">
+    <div class="image-container">
       <img src="<%= footerImage %>" alt="Footer">
     </div>
-
     <!-- Footer Text (This will render the unsubscribe link as HTML content) -->
-    <div class="footer">
-      <p>If this email is not displaying correctly, <a href="<%= viewInBrowserLink %>" target="_blank">view it in your
-          browser</a>.</p>
-      <%- footerText %>
-    </div>
-
-
+    <p>If this email is not displaying correctly, <a href="<%= viewInBrowserLink %>" target="_blank">view it in your
+        browser</a>.</p>
+    <%- footerText %>
   </div>
 </body>
+
 
 </html>
