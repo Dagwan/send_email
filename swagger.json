@@ -8,7 +8,7 @@
   "host": "localhost:8080/send-invitation-email",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -716,5 +716,5 @@
       }
     }
   },
-  "hosts": "https://send-email-517z.onrender.com/"
+  "hosts": "https://send-email-517z.onrender.com/api-docs/"
 }
