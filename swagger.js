@@ -1,6 +1,13 @@
 const swaggerAutogen = require('swagger-autogen')();
 require('dotenv').config();
 
+// Determine the environment
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Dynamically set host and schemes based on environment
+const host = isProduction ? process.env.HOSTS : process.env.HOST;
+const schemes = isProduction ? ['https'] : ['http'];
+
 const doc = {
   info: {
     title: 'London Graduate School Email Service API',
@@ -19,22 +26,26 @@ const doc = {
 
 Integrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.`,
   },
-  
-  // Production
-  hosts: 'https://send-email-517z.onrender.com/api-docs/',
-  schemes: [process.env.SCHEMES || 'https'],
-   
-  // Development
-  host: process.env.HOST || 'localhost:8080',
-  schemes: [process.env.SCHEMES || 'http'],
-
+  host: host,
+  schemes: schemes,
   definitions: {
     EmailRequest: {
       type: 'object',
       properties: {
-        email: { type: 'array', items: { type: 'string', format: 'email' }, description: 'List of recipient email addresses.' },
-        name: { type: 'array', items: { type: 'string' }, description: 'List of recipient names.' },
-        subject: { type: 'string', description: 'Subject of the email.' },
+        email: { 
+          type: 'array', 
+          items: { type: 'string', format: 'email' }, 
+          description: 'List of recipient email addresses.' 
+        },
+        name: { 
+          type: 'array', 
+          items: { type: 'string' }, 
+          description: 'List of recipient names.' 
+        },
+        subject: { 
+          type: 'string', 
+          description: 'Subject of the email.' 
+        },
         dynamicContent: {
           type: 'object',
           properties: {
@@ -82,7 +93,7 @@ Integrate this email service API into your applications to enhance communication
             enrolNowInfo: { type: 'string' },
             closingLine: { type: 'string' },
             signatureImage: { type: 'string', format: 'uri' },
-            SignName: { type: 'string' },
+            signName: { type: 'string' },
             letterheadImage: { type: 'string', format: 'uri' },
             footerText: { type: 'string' },
             footerImage: { type: 'string', format: 'uri' },
@@ -106,7 +117,6 @@ Integrate this email service API into your applications to enhance communication
       required: ['email', 'name', 'subject', 'dynamicContent']
     }
   },
-
   paths: {
     '/send-invitation-email': {
       post: {
@@ -161,12 +171,12 @@ Integrate this email service API into your applications to enhance communication
         ],
         responses: {
           200: {
-            description: 'London Graduate School email sent successfully',
+            description: 'Welcome email sent successfully',
             content: {
               'text/html': {
                 schema: {
                   type: 'string',
-                  example: 'London Graduate School email sent successfully.'
+                  example: 'Welcome email sent successfully.'
                 }
               }
             }
@@ -187,5 +197,6 @@ const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/emailRoutes.js'];
 
 // Generate swagger.json
-swaggerAutogen(outputFile, endpointsFiles, doc);
-console.log('Swagger documentation generated successfully');
+swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
+  console.log('Swagger documentation generated successfully');
+});

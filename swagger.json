@@ -559,7 +559,7 @@
                         }
                       }
                     },
-                    "SignName": {
+                    "signName": {
                       "type": "object",
                       "properties": {
                         "type": {
@@ -715,6 +715,5 @@
         }
       }
     }
-  },
-  "hosts": "https://send-email-517z.onrender.com/api-docs/"
+  }
 }
