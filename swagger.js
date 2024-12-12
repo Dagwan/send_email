@@ -26,7 +26,7 @@ const doc = {
 Integrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.`,
   },
   host,
-  schemes,
+  schemes, // Ensure the scheme is correctly set to http or https
   definitions: {
     EmailRequest: {
       type: 'object',
@@ -160,6 +160,7 @@ const endpointsFiles = ['./routes/emailRoutes.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
 console.log('Swagger runs successfully');
+
 
 
 // const swaggerAutogen = require('swagger-autogen')();
