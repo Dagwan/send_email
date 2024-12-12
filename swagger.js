@@ -6,7 +6,7 @@ const environment = process.env.NODE_ENV || '';
 // Determine the host and scheme based on the environment
 const isProduction = environment === 'production';
 const host = isProduction ? process.env.PROD_HOST : process.env.DEV_HOST;
-const schemes = [isProduction ? process.env.PROD_SCHEME : process.env.DEV_SCHEME];
+const schemes = [isProduction ? 'https' : 'http']; // Set to https in production
 
 const doc = {
   info: {
@@ -26,7 +26,7 @@ const doc = {
 Integrate this email service API into your applications to enhance communication with your users by sending personalized and well-formatted emails.`,
   },
   host,
-  schemes, // Ensure the scheme is correctly set to http or https
+  schemes, // Now it will use http for development and https for production
   definitions: {
     EmailRequest: {
       type: 'object',
