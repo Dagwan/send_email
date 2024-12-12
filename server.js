@@ -1,53 +1,45 @@
-// server.js
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
 const cors = require('cors');
+const session = require('express-session');
+const fileUpload = require('express-fileupload');
 
-const app = express();
+
 const port = process.env.PORT || 8080;
+const app = express();
 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Enable CORS for all routes
 app.use(cors());
 
-// Serve static files (if needed)
-app.use(express.static(path.join(__dirname, 'public')));
+// Express session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'default-secret', 
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-// Set view engine and views directory for EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// Middleware for parsing JSON requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(fileUpload());
 
 // Use routes defined in separate files
 app.use('/', require('./routes'));
 
-// Default route
-app.get('/', (req, res) => {
-  res.send('Welcome to London\'s Email System API');
-});
-
-// Global error handling
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send('Something went wrong!');
 });
 
-// Start server
-if (process.env.NODE_ENV === 'production') {
-  // In production, use HTTPS (Render will handle SSL for you)
-  app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on https://localhost:${port}`);
-  });
-} else {
-  // In development, use HTTP
-  app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on http://localhost:${port}`);
-  });
-}
 
-
+    app.listen(port, () => {
+      console.log(`Running and listening on port ${port}`);
+      console.log('London Graduate successfully initialized');
+    });
 
 
 // // server.js
