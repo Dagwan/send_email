@@ -14,7 +14,7 @@ app.use(cors());
 // Express session middleware
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'default-secret', 
+    secret: process.env.SESSION_SECRET || 'default-secret',
     resave: false,
     saveUninitialized: false,
   })
@@ -35,11 +35,11 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something went wrong!');
 });
 
-
-    app.listen(port, () => {
-      console.log(`Running and listening on port ${port}`);
-      console.log('London Graduate successfully initialized');
-    });
+// Starting server
+app.listen(port, () => {
+  console.log(`Running and listening on port ${port}`);
+  console.log('London Graduate successfully initialized');
+});
 
 
 // // server.js
