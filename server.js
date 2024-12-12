@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const session = require('express-session');
 const fileUpload = require('express-fileupload');
 
 
@@ -10,15 +9,6 @@ const app = express();
 
 // Enable CORS for all routes
 app.use(cors());
-
-// Express session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || 'default-secret',
-    resave: false,
-    saveUninitialized: false,
-  })
-);
 
 // Middleware for parsing JSON requests
 app.use(bodyParser.json());
