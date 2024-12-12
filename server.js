@@ -2,7 +2,6 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const emailRoutes = require('./routes/emailRoutes');
 const path = require('path');
 const cors = require('cors');
 const https = require('https');
@@ -39,19 +38,18 @@ app.use((err, req, res, next) => {
 
 // Start server
 if (process.env.NODE_ENV === 'production') {
-  // Check if SSL certificates are available
+  // In production, use HTTPS if SSL certificates are available, otherwise fallback to HTTP
   const sslOptions = {
     key: fs.existsSync(path.join(__dirname, 'ssl', 'server.key')) ? fs.readFileSync(path.join(__dirname, 'ssl', 'server.key')) : null,
     cert: fs.existsSync(path.join(__dirname, 'ssl', 'server.crt')) ? fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')) : null
   };
 
-  // If SSL certificates are available, use HTTPS, else fallback to HTTP
   if (sslOptions.key && sslOptions.cert) {
     https.createServer(sslOptions, app).listen(port, () => {
       console.log(`Server running on https://localhost:${port}`);
     });
   } else {
-    console.log('SSL certificates not found, falling back to HTTP');
+    console.log('No SSL certificates found, using HTTP in production');
     app.listen(port, '0.0.0.0', () => {
       console.log(`Server running on http://localhost:${port}`);
     });
@@ -62,6 +60,7 @@ if (process.env.NODE_ENV === 'production') {
     console.log(`Server running on http://localhost:${port}`);
   });
 }
+
 
 
 
