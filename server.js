@@ -4,8 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const https = require('https');
-const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -38,18 +36,12 @@ app.use((err, req, res, next) => {
 
 // Start server
 if (process.env.NODE_ENV === 'production') {
-  // For production, always use HTTPS
-  const sslOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key')),
-    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt'))
-  };
-
-  // Ensure HTTPS for production environment
-  https.createServer(sslOptions, app).listen(port, () => {
+  // In production, use HTTPS (Render will handle SSL for you)
+  app.listen(port, '0.0.0.0', () => {
     console.log(`Server running on https://localhost:${port}`);
   });
 } else {
-  // For development, use HTTP
+  // In development, use HTTP
   app.listen(port, '0.0.0.0', () => {
     console.log(`Server running on http://localhost:${port}`);
   });
