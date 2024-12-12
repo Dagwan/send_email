@@ -38,22 +38,16 @@ app.use((err, req, res, next) => {
 
 // Start server
 if (process.env.NODE_ENV === 'production') {
-  // In production, use HTTPS if SSL certificates are available, otherwise fallback to HTTP
+  // For production, always use HTTPS
   const sslOptions = {
-    key: fs.existsSync(path.join(__dirname, 'ssl', 'server.key')) ? fs.readFileSync(path.join(__dirname, 'ssl', 'server.key')) : null,
-    cert: fs.existsSync(path.join(__dirname, 'ssl', 'server.crt')) ? fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')) : null
+    key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key')),
+    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt'))
   };
 
-  if (sslOptions.key && sslOptions.cert) {
-    https.createServer(sslOptions, app).listen(port, () => {
-      console.log(`Server running on https://localhost:${port}`);
-    });
-  } else {
-    console.log('No SSL certificates found, using HTTP in production');
-    app.listen(port, '0.0.0.0', () => {
-      console.log(`Server running on http://localhost:${port}`);
-    });
-  }
+  // Ensure HTTPS for production environment
+  https.createServer(sslOptions, app).listen(port, () => {
+    console.log(`Server running on https://localhost:${port}`);
+  });
 } else {
   // For development, use HTTP
   app.listen(port, '0.0.0.0', () => {
