@@ -65,7 +65,7 @@ Content-Type: application/json
     "enrolNowInfo": "To accept, email info@londongs.co.uk or call +44 778 677 6802, attaching your profile for planning and awards committee review.",
     "closingLine": "Yours sincerely",
     "signatureImage": "https://i.postimg.cc/Bb4ySQTd/signature.jpg",
-    "SignName": "Ms. Sadiksha Rai",
+    "signName": "Ms. Sadiksha Rai",
     "letterheadImage": "https://i.postimg.cc/Y9qqvkzm/heading.jpg",
     "footerText": "If you no longer wish to receive emails from us, you can <a href='https://www.londongs.co.uk/unsubscribe' target='_blank'>unsubscribe here</a>.",
     "footerImage": "https://i.postimg.cc/RZK08g0q/footer.jpg",
