@@ -1,7 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')();
 require('dotenv').config();
 
-const environment = process.env.NODE_ENV || 'development';
+const environment = process.env.NODE_ENV || '';
 
 // Determine the host and scheme based on the environment
 const isProduction = environment === 'production';
@@ -159,7 +159,7 @@ const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/emailRoutes.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
-console.log('Swagger documentation generated successfully');
+console.log('Swagger runs successfully');
 
 
 // const swaggerAutogen = require('swagger-autogen')();
