@@ -16,7 +16,7 @@ This email system is designed to enhance the communication infrastructure at Lon
 
 ## API Documentation
 To explore the API and test the endpoints, you can use Swagger UI, which provides an interactive documentation interface. Access the Swagger UI at:
-[API Documentation](https://send-email-517z.onrender.com/send-welcome-email/api-docs/). 
+[API Documentation](https://send-email-517z.onrender.com/send-invitation-email/api-docs). 
 
 You can find information on how to test the  swagger UI in the routes.rest.
 
@@ -101,6 +101,6 @@ Planned improvements for the email system include:
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
-### License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](/docs/LICENSE) file for details.
